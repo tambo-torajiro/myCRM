@@ -13,7 +13,7 @@ class StoreEmployeeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class StoreEmployeeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => ['required', 'max:50'],
+            'tel' => ['required', 'numeric'],
+            'employee_status' => ['max:10'],
+            'emergency_name' => ['max:25'],
+            'emergency_contact' => ['numeric'],
+            'emergency_relation' => ['max:25'],
         ];
     }
 }

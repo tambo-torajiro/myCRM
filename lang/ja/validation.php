@@ -166,6 +166,7 @@ return [
         'address' => '住所',
         'birthday' => '誕生日',
         'gender' => '性別',
+        'emergency_contact' => '緊急連絡先電話番号'
     ],
 
 ];
