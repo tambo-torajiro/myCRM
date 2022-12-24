@@ -6,34 +6,34 @@ import { reactive } from 'vue';
 import VallidationErrors from '@/Components/VallidationErrors.vue';
 
 const props = defineProps({
-    employee: Object
+    vehicle: Object
 })
 
 const form = reactive({
-    id: props.employee.id,
-    name: props.employee.name,
-    tel: props.employee.tel,
-    employee_status: props.employee.employee_status,
-    emergency_name: props.employee.emergency_name,
-    emergency_contact: props.employee.emergency_contact,
-    emergency_relation: props.employee.emergency_relation,
-    deleted_at: props.employee.deleted_at
+    id: props.vehicle.id,
+    type: props.vehicle.type,
+    car_number: props.vehicle.car_number,
+    body_type: props.vehicle.body_type,
+    registration_date: props.vehicle.registration_date,
+    inspection_date: props.vehicle.inspection_date,
+    start_milage: props.vehicle.start_milage,
+    deleted_at: props.vehicle.deleted_at
 })
 
-const updateEmployee = id => {
-    Inertia.put(route('employees.update', { employee: id }), form);
+const updateVehicle = id => {
+    Inertia.put(route('vehicles.update', { vehicle: id }), form);
 }
 
 </script>
 
 <template>
 
-    <Head title="従業員編集" />
+    <Head title="車両編集" />
 
     <AuthenticatedLayout>
         <template #header>
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
-                従業員編集
+                車両編集
             </h2>
         </template>
 
@@ -43,70 +43,68 @@ const updateEmployee = id => {
                     <div class="p-6 text-gray-900">
                         <VallidationErrors class="mb-4" />
                         <section class="relative text-gray-600 body-font">
-                            <form @submit.prevent="updateEmployee(form.id)">
+                            <form @submit.prevent="updateVehicle(form.id)">
                                 <div class="container px-5 py-8 mx-auto">
                                     <div class="mx-auto lg:w-1/2 md:w-2/3">
                                         <div class="flex flex-wrap -m-2">
 
                                             <div class="w-full p-2">
                                                 <div class="relative">
-                                                    <label for="name" class="text-sm leading-7 text-gray-600">従業員名<span
+                                                    <label for="type" class="text-sm leading-7 text-gray-600">車両タイプ<span
                                                             class="ml-2 text-sm text-blue-300">(必須)</span></label>
-                                                    <input type="text" id="name" name="name" v-model="form.name"
+                                                    <input type="text" id="type" name="type" v-model="form.type"
                                                         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200" />
                                                 </div>
                                             </div>
 
                                             <div class="w-full p-2">
                                                 <div class="relative">
-                                                    <label for="tel" class="text-sm leading-7 text-gray-600">電話番号<span
+                                                    <label for="car_number"
+                                                        class="text-sm leading-7 text-gray-600">車両番号<span
                                                             class="ml-2 text-sm text-blue-300">(必須)</span></label>
-                                                    <input type="tel" id="tel" name="tel" v-model="form.tel"
+                                                    <input type="text" id="car_number" name="car_number"
+                                                        v-model="form.car_number"
                                                         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200" />
                                                 </div>
                                             </div>
 
                                             <div class="w-full p-2">
                                                 <div class="relative">
-                                                    <label for="employee_status"
-                                                        class="text-sm leading-7 text-gray-600">雇用形態</label>
-                                                    <select id="employee_status" v-model="form.employee_status"
-                                                        class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
-                                                        <option value="1">正社員</option>
-                                                        <option value="2">派遣</option>
-                                                        <option value="3">アルバイト</option>
-                                                        <option value="4">請負</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="w-full p-2">
-                                                <div class="relative">
-                                                    <label for="emergency_name"
-                                                        class="text-sm leading-7 text-gray-600">緊急連絡先氏名</label>
-                                                    <input type="text" id="emergency_name" name="emergency_name"
-                                                        v-model="form.emergency_name"
+                                                    <label for="body_type"
+                                                        class="text-sm leading-7 text-gray-600">車両型式</label>
+                                                    <input type="text" id="body_type" name="body_type"
+                                                        v-model="form.body_type"
                                                         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200" />
                                                 </div>
                                             </div>
 
                                             <div class="w-full p-2">
                                                 <div class="relative">
-                                                    <label for="emergency_contact"
-                                                        class="text-sm leading-7 text-gray-600">緊急連絡先電話番号<span
+                                                    <label for="registration_date"
+                                                        class="text-sm leading-7 text-gray-600">登録年月<span>（入力形式：〇〇〇〇-△△)</span></label>
+                                                    <input type="text" id="registration_date" name="registration_date"
+                                                        v-model="form.registration_date"
+                                                        class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200" />
+                                                </div>
+                                            </div>
+
+                                            <div class="w-full p-2">
+                                                <div class="relative">
+                                                    <label for="inspection_date"
+                                                        class="text-sm leading-7 text-gray-600">車検年月<span>（入力形式：〇〇〇〇-△△)</span><span
                                                             class="ml-2 text-sm text-blue-300">(必須)</span></label>
-                                                    <input type="tel" id="emergency_contact" name="emergency_contact"
-                                                        v-model="form.emergency_contact"
+                                                    <input type="text" id="inspection_date" name="inspection_date"
+                                                        v-model="form.inspection_date"
                                                         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200" />
                                                 </div>
                                             </div>
 
                                             <div class="w-full p-2">
                                                 <div class="relative">
-                                                    <label for="emergency_relation"
-                                                        class="text-sm leading-7 text-gray-600">続柄</label>
-                                                    <input type="text" id="emergency_relation"
-                                                        name="	emergency_relation" v-model="form.emergency_relation"
+                                                    <label for="start_milage"
+                                                        class="text-sm leading-7 text-gray-600">走行開始距離(Km)</label>
+                                                    <input type="number" id="start_milage" name="start_milage"
+                                                        v-model="form.start_milage"
                                                         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200" />
                                                 </div>
                                             </div>

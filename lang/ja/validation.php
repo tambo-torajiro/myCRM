@@ -166,7 +166,14 @@ return [
         'address' => '住所',
         'birthday' => '誕生日',
         'gender' => '性別',
-        'emergency_contact' => '緊急連絡先電話番号'
+        'emergency_contact' => '緊急連絡先電話番号',
+        'type' => '車両タイプ',
+        'car_number' => '車両番号',
+        'inspection_date' => '車検年月',
+        'start_milage' => '走行開始距離',
+        'work_category' => '業務カテゴリ',
+        'person_in_charge1' => '担当者01',
+        'request_date' => '依頼日'
     ],
 
 ];

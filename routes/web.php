@@ -4,7 +4,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\VehicleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +19,13 @@ use App\Http\Controllers\EmployeeController;
 |
 */
 
+Route::resource('customers',CustomerController::class)
+->middleware(['auth', 'verified']);
+
 Route::resource('employees',EmployeeController::class)
+->middleware(['auth', 'verified']);
+
+Route::resource('vehicles',VehicleController::class)
 ->middleware(['auth', 'verified']);
 
 
